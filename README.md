@@ -5,7 +5,7 @@
 
 ```
 aizu_online_judge/
-└── volume_0　<- 問題の種類
-    ├── answers <- 解答(基本的にRubyで)
-    └── inputs  <- 問題に対する入力
+└── volume_0        <- 問題の種類
+    ├── answers     <- 解答(基本的にRubyで)
+    └── inputs      <- 問題に対する入力
 ```
