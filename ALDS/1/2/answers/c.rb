@@ -8,6 +8,7 @@ def bubble_sort(c, n)
   end
 
   puts c.join(' ')
+  puts 'Stable'
 
   c
 end
@@ -29,36 +30,11 @@ def selection_sort(c, n)
   c
 end
 
-def check_stable(c, before_order, targets)
-  after_order = Hash.new { |h, k| h[k] = [] }
-
-  c.each do |elem|
-    if targets.include?(elem[1])
-      after_order[elem[1]] << elem[0]
-    end
-  end
-
-  diff = false
-  targets.each do |target|
-    if before_order[target] != after_order[target]
-      diff = true
-      break
-    end
-  end
-
-  puts diff ? 'Not stable' : 'Stable'
-end
-
-
 N = gets.to_i
 C = gets.split
 
-before_order = Hash.new { |h, k| h[k] = [] }
-C.each do |elem|
-  before_order[elem[1]] << elem[0]
+if bubble_sort(C.dup, N) == selection_sort(C.dup, N)
+  puts 'Stable'
+else
+  puts 'Not stable'
 end
-before_order.select! { |k, v| v.length >= 2 }
-targets = before_order.keys
-
-check_stable(bubble_sort(C.dup, N), before_order, targets)
-check_stable(selection_sort(C.dup, N), before_order, targets)
